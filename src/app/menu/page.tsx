@@ -71,14 +71,6 @@ export default function MenuPage() {
           {/* CTA WhatsApp + Instagram */}
           <div className="flex flex-col sm:flex-row gap-3">
             <a
-              href="https://wa.me/56652260977"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 font-jost text-sm px-5 py-2.5 bg-bordo text-white rounded-lg hover:bg-[#6a2535] transition-colors"
-            >
-              Pedir por WhatsApp
-            </a>
-            <a
               href="https://www.instagram.com/sirope.cafe"
               target="_blank"
               rel="noopener noreferrer"

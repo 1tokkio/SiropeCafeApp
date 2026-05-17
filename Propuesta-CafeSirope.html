@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta — Café Sirope</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FAF7F2;
+      --surface: #F0EBE1;
+      --cafe: #2E1F14;
+      --bordo: #7B2D3E;
+      --muted: #9E8E80;
+      --linea: #E2D9CF;
+    }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--bg);
+      color: var(--cafe);
+      min-height: 100vh;
+      padding: 48px 24px;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--linea);
+      border-radius: 4px;
+      padding: 64px 72px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-bottom: 32px;
+      border-bottom: 0.5px solid var(--linea);
+      margin-bottom: 48px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 28px;
+      color: var(--cafe);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .meta {
+      text-align: right;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* Intro */
+    .label {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 34px;
+      line-height: 1.2;
+      color: var(--cafe);
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: #4a3a2e;
+      margin-bottom: 40px;
+    }
+
+    /* Divider */
+    .divider {
+      height: 0.5px;
+      background: var(--linea);
+      margin: 36px 0;
+    }
+
+    /* Section title */
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--cafe);
+      margin-bottom: 16px;
+    }
+
+    /* Entregables list */
+    .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.5;
+      color: #4a3a2e;
+    }
+
+    .list li::before {
+      content: '—';
+      color: var(--bordo);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Pricing table */
+    .pricing {
+      margin: 24px 0;
+      border: 1px solid var(--linea);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .pricing-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      font-size: 13px;
+      border-bottom: 0.5px solid var(--linea);
+    }
+
+    .pricing-row:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-row.total {
+      background: var(--surface);
+    }
+
+    .pricing-row .desc {
+      font-weight: 300;
+      color: var(--cafe);
+    }
+
+    .pricing-row .desc small {
+      display: block;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .pricing-row .price {
+      font-weight: 500;
+      color: var(--cafe);
+      white-space: nowrap;
+    }
+
+    .pricing-row.total .price {
+      color: var(--bordo);
+      font-size: 14px;
+    }
+
+    /* Note box */
+    .note {
+      background: #F9F0F2;
+      border-left: 2px solid var(--bordo);
+      padding: 14px 18px;
+      border-radius: 0 4px 4px 0;
+      font-size: 12px;
+      font-weight: 300;
+      color: #5a3a40;
+      line-height: 1.65;
+      margin-top: 24px;
+    }
+
+    /* Sign-off */
+    .signoff {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 0.5px solid var(--linea);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+    }
+
+    .signoff-text {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 340px;
+    }
+
+    .signoff-name {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .signoff-name strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--cafe);
+    }
+
+    .signoff-name span {
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    /* Preview link box */
+    .preview-box {
+      margin-top: 32px;
+      padding: 18px 20px;
+      border: 1px solid var(--linea);
+      border-radius: 4px;
+      background: var(--surface);
+    }
+
+    .preview-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bordo);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .preview-link:hover { text-decoration: underline; }
+
+    @media print {
+      body { padding: 0; background: white; }
+      .page { border: none; border-radius: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <div class="header">
+      <div>
+        <div class="logo">
+          Sirope
+          <span>Café · Puerto Montt</span>
+        </div>
+      </div>
+      <div class="meta">
+        Propuesta comercial<br>
+        Mayo 2026<br>
+        Referencia: Web-001
+      </div>
+    </div>
+
+    <!-- Intro -->
+    <p class="label">Presentación</p>
+    <h1>Propuesta de sitio web<br>para Café Sirope</h1>
+
+    <p class="intro">
+      Mi nombre es <strong>Matías</strong>, estudiante de Ingeniería Informática.
+      Estoy en busca de clientes por lo que estoy ofreciendo propuestas para el desarrollo de sitios web
+      profesionales a locales y pymes de Puerto Montt, pensado para reflejar la identidad del lugar y facilitar
+      que nuevos clientes los encuentren en línea.
+    </p>
+
+    <div class="divider"></div>
+
+    <!-- Entregables -->
+    <h2>¿Qué incluye?</h2>
+    <ul class="list">
+      <li>Sitio web completo con diseño a medida para Café Sirope</li>
+      <li>Página principal con secciones: inicio, sobre nosotros, destacados, carta y horarios</li>
+      <li>Página de carta completa con todas las categorías y precios del menú</li>
+      <li>Diseño proporcional, se adapta correctamente a teléfono, tablet y computador</li>
+      <li>Integración de fotos del local y su Instagram</li>
+      <li>Enlace directo a WhatsApp y Google Maps</li>
+      <li>Configuración del dominio personalizado (ej. <em>cafesirope.cl</em>)</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <!-- Precios -->
+    <h2>Inversión estimada</h2>
+
+    <div class="pricing">
+      <div class="pricing-row">
+        <div class="desc">
+          Desarrollo del sitio web
+          <small>Diseño, programación, fotos y publicación</small>
+        </div>
+        <div class="price">$90.000 – $120.000</div>
+      </div>
+      <div class="pricing-row">
+        <div class="desc">
+          Dominio personalizado
+          <small>Renovación anual del dominio (.cl o .com)</small>
+        </div>
+        <div class="price">$15.000 / año</div>
+      </div>
+      <div class="pricing-row total">
+        <div class="desc">
+          Alojamiento (hosting)
+          <small>Incluido en el precio del sitio</small>
+        </div>
+        <div class="price">Sin costo</div>
+      </div>
+    </div>
+
+    <div class="note">
+      Esta propuesta es solo una referencia inicial. Estoy completamente abierto a conversar
+      el precio, los plazos o cualquier funcionalidad que quieran agregar o cambiar.
+      La idea es que el sitio quede exactamente como ustedes lo imaginan.
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Proceso -->
+    <h2>¿Cómo sería el proceso?</h2>
+    <ul class="list">
+      <li>Revisamos juntos el sitio actual y definen qué cambios o mejoras les gustarían</li>
+      <li>Se realizan los ajustes — colores, textos, fotos, secciones — según sus preferencias</li>
+      <li>Una vez aprobado, el sitio se publica en línea con el dominio elegido</li>
+      <li>Cualquier corrección menor posterior está incluida sin costo adicional</li>
+    </ul>
+
+    <!-- Preview link -->
+    <div class="preview-box">
+      <p class="label" style="margin-bottom:8px;">Vista previa del sitio</p>
+      <a href="https://sirope-cafe-app.vercel.app/" target="_blank" class="preview-link">
+        sirope-cafe-app.vercel.app
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:inline;margin-left:5px;vertical-align:middle;">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <path d="M15 3h6v6"/><path d="M10 14L21 3"/>
+        </svg>
+      </a>
+      <p style="font-size:11px;font-weight:300;color:var(--muted);margin-top:6px;">
+        Este es el sitio de demostración — puede visitarlo ahora mismo para ver cómo quedaría.
+      </p>
+    </div>
+
+    <!-- Sign-off -->
+    <div class="signoff">
+      <p class="signoff-text">
+        Cualquier consulta o comentario es bienvenido.
+        Esta propuesta no tiene ningún compromiso —
+        si les interesa o quieren ver algún cambio, con gusto lo conversamos.
+      </p>
+      <div class="signoff-name">
+        <strong>Matías Vargas</strong>
+        <span>Ingeniería Informática, 3.er año</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
