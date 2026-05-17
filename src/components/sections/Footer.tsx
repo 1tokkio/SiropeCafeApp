@@ -99,7 +99,7 @@ export default function Footer() {
           </p>
           <p className="font-jost font-light text-xs text-muted">
             Diseño y desarrollo por{' '}
-            <span className="text-surface/50">Tu Nombre</span>
+            <span className="text-surface/50">Matías V.</span>
           </p>
         </div>
       </div>

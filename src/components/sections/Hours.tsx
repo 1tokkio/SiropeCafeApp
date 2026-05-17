@@ -13,7 +13,7 @@ const schedule = [
   { label: 'Domingo', days: [0], hours: 'Cerrado', closed: true },
 ]
 
-const paymentChips = ['Débito', 'Crédito', 'NFC', 'Delivery']
+const paymentChips = ['Débito', 'Crédito', 'NFC']
 
 export default function Hours() {
   const [today, setToday] = useState<number | null>(null)
@@ -116,18 +116,7 @@ export default function Hours() {
                   </span>
                 ))}
               </div>
-            </div>
-
-            {/* Accesibilidad */}
-            <div className="flex items-center gap-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-oliva shrink-0" aria-hidden="true">
-                <circle cx="12" cy="4" r="2" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M6 21v-4l3-3 3 3v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M6 12h6l3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="18" cy="19" r="2.5" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
-              <span className="font-jost font-light text-xs text-muted">Accesible en silla de ruedas</span>
-            </div>
+            </div>   
           </div>
         </RevealOnScroll>
       </div>
